@@ -1,16 +1,57 @@
 class Zap < Formula
   desc "Recursive URL expander"
   homepage "https://github.com/issmirnov/zap"
-  url "https://github.com/issmirnov/zap/releases/download/0.9.0/zap"
-  sha256 "8dd6fcab9588c452951911612e4301dd7fef90ad6130164330b3bfffe0add1dc"
+  url "https://github.com/issmirnov/zap/releases/download/0.9.1/zap.tgz"
+  sha256 "08556155f03e7cc32207e9af498627836e145abbef72e937b8b88eff2caad039"
 
   bottle :unneeded
 
   def install
     bin.install "zap"
+    (etc/"zap").mkpath
+    (etc/"zap").install "c.yml"
   end
 
   test do
     system "#{bin}/zap", "-v"
+  end
+
+  def caveats
+    s = <<-EOS.undent
+    #{name} will listen on port 80 for requests. Using config file:
+    #{etc}/zap/c.yml. Please update /etc/hosts with your shortcuts.
+    
+    If you would like to run this asa system service, simply run 
+    `sudo brew services start zap`
+    
+    If you would like to run this behind a webserver proxy, see 
+    https://github.com/issmirnov/zap/blob/master/README.md#brew-webserver
+    EOS
+    s
+  end
+
+  def plist;
+  <<-EOS.undent
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+      <dict>
+        <key>Label</key>
+        <string>#{plist_name}</string>
+        <key>RunAtLoad</key>
+        <true/>
+        <key>KeepAlive</key>
+        <false/>
+        <key>WorkingDirectory</key>
+        <string>#{HOMEBREW_PREFIX}/etc/zap</string>
+        <key>ProgramArguments</key>
+        <array>
+            <string>#{bin}/zap</string>
+            <string>-port</string>
+            <string>80</string>
+        </array>
+      </dict>
+    </plist>
+    EOS
   end
 end

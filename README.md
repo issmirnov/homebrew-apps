@@ -7,5 +7,5 @@ Simple repo to distribute apps I build via homebrew.
 ## Zap
 
 - https://github.com/issmirnov/zap
-- `brew install issmirnov/tools/zap`
+- `brew install issmirnov/apps/zap`
 
