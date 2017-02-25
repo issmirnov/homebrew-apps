@@ -1,8 +1,8 @@
 class Zap < Formula
   desc "Recursive URL expander"
   homepage "https://github.com/issmirnov/zap"
-  url "https://github.com/issmirnov/zap/releases/download/0.9.1/zap.tgz"
-  sha256 "08556155f03e7cc32207e9af498627836e145abbef72e937b8b88eff2caad039"
+  url "https://github.com/issmirnov/zap/releases/download/v0.9.8/zap_MacOS_64-bit.tar.gz"
+  sha256 "d7a37e0df3a4241cd300e8e46d498aa06750e2db07ba1c96510243f7aa8d2583" 
 
   bottle :unneeded
 
@@ -25,7 +25,7 @@ class Zap < Formula
     `sudo brew services start zap`
     
     If you would like to run this behind a webserver proxy, see 
-    https://github.com/issmirnov/zap/blob/master/README.md#brew-webserver
+    https://github.com/issmirnov/zap/blob/master/README.md#osx-brew
     EOS
     s
   end
