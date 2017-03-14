@@ -1,8 +1,8 @@
 class Zap < Formula
   desc "Recursive URL expander"
   homepage "https://github.com/issmirnov/zap"
-  url "https://github.com/issmirnov/zap/releases/download/v0.9.2/zap_MacOS_64-bit.tar.gz"
-  sha256 "b55622df7f00d7b5316967ba087bff483de9e2c858be6004eb434ac464f2ea24" 
+  url "https://github.com/issmirnov/zap/releases/download/v0.9.3/zap_MacOS_64-bit.tar.gz"
+  sha256 "9993f0107739ef22164f23ea1d6d0818b9389d3fd9c434e29b998eb304c118e3" 
 
   bottle :unneeded
 
@@ -26,6 +26,8 @@ class Zap < Formula
     
     If you would like to run this behind a webserver proxy, see 
     https://github.com/issmirnov/zap/blob/master/README.md#osx-brew
+
+    NOTE: Please restart the service after upgrading!
     EOS
     s
   end
