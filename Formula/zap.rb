@@ -1,8 +1,8 @@
 class Zap < Formula
   desc "Recursive URL expander"
   homepage "https://github.com/issmirnov/zap"
-  url "https://github.com/issmirnov/zap/releases/download/v0.9.4/zap_MacOS_64-bit.tar.gz"
-  sha256 "cb23019b55ad673af7f41648861fa24f26a49f241fd80be8a470210f7b515332"
+  url "https://github.com/issmirnov/zap/releases/download/v0.9.5/zap_MacOS_64-bit.tar.gz"
+  sha256 "3d2ab49bdb6b3917f31203f95cc2df77ab7dac64f83f9ef3c640b318b76a6620"
 
   bottle :unneeded
 
