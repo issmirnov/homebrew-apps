@@ -20,13 +20,15 @@ class Zap < Formula
   def caveats
     s = <<-EOS.undent
     #{name} will listen on port 80 for requests. Using config file:
-    #{etc}/zap/c.yml. Please update /etc/hosts with your shortcuts.
+    #{etc}/zap/c.yml. Zap supports hot reloading, so simply edit the
+    file and try your new shortcuts.
     
-    If you would like to run this asa system service, simply run 
+    If you would like to run this as a system service, simply run 
     `sudo brew services start zap`
     
     If you would like to run this behind a webserver proxy, see 
-    https://github.com/issmirnov/zap/blob/master/README.md#osx-brew
+    https://github.com/issmirnov/zap/blob/master/README.md#osx-brew.
+    Be sure to update /etc/hosts with your shortcuts.
 
     NOTE: Please restart the service after upgrading!
     EOS
