@@ -1,0 +1,12 @@
+language: bash
+sudo: true
+os: osx
+  
+install:
+  - brew tap issmirnov/apps
+  - "HOMEBREW_NO_AUTO_UPDATE=1 brew install issmirnov/apps/zap" 
+
+script:
+  - sudo brew services start issmirnov/apps/zap
+  - "curl -s -o /dev/null -w '%{http_code} %{redirect_url}\n' -H 'Host: g' localhost/z"
+  - "brew audit --strict --online zap"
