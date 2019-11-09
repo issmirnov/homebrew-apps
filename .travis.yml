@@ -10,7 +10,7 @@ os: osx
 install:
   - brew tap issmirnov/apps
   - brew update
-  - brew install issmirnov/apps/zap" 
+  - brew install issmirnov/apps/zap
 
 script:
   - export HOMEBREW_NO_AUTO_UPDATE=1
