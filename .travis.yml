@@ -1,10 +1,16 @@
-language: bash
+language: ruby
+rvm:
+  - 2.6
 sudo: true
+env: OSX=10.12
+osx_image: xcode10.3
+sudo: required
 os: osx
   
 install:
+  - export HOMEBREW_NO_AUTO_UPDATE=1
   - brew tap issmirnov/apps
-  - "HOMEBREW_NO_AUTO_UPDATE=1 brew install issmirnov/apps/zap" 
+  - brew install issmirnov/apps/zap
 
 script:
   - sudo brew services start issmirnov/apps/zap
