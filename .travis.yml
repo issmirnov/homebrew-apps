@@ -3,7 +3,7 @@ rvm:
   - 2.6
 sudo: true
 env: OSX=10.12
-osx_image: xcode8.3
+osx_image: xcode10.3
 sudo: required
 os: osx
   
