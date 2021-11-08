@@ -5,8 +5,6 @@ class Zap < Formula
   version "1.2.0"
   sha256 "ada1af0408a4bfd7fd8495a4c2b1c08ee2624d475f80db11026a4da5b0c891db"
 
-  bottle :unneeded
-
   def install
     bin.install "zap"
     (etc/"zap").mkpath
