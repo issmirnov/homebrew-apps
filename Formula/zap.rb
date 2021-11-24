@@ -30,28 +30,30 @@ class Zap < Formula
   end
 
   plist_options :manual => "zap"
-  def plist; <<~EOS
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-      <dict>
-        <key>Label</key>
-        <string>#{plist_name}</string>
-        <key>RunAtLoad</key>
-        <true/>
-        <key>KeepAlive</key>
-        <false/>
-        <key>WorkingDirectory</key>
-        <string>#{HOMEBREW_PREFIX}/etc/zap</string>
-        <key>ProgramArguments</key>
-        <array>
-            <string>#{bin}/zap</string>
-            <string>-port</string>
-            <string>80</string>
-        </array>
-      </dict>
-    </plist>
-  EOS
+  def plist
+    p = <<~EOS
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+      <plist version="1.0">
+        <dict>
+          <key>Label</key>
+          <string>#{plist_name}</string>
+          <key>RunAtLoad</key>
+          <true/>
+          <key>KeepAlive</key>
+          <false/>
+          <key>WorkingDirectory</key>
+          <string>#{HOMEBREW_PREFIX}/etc/zap</string>
+          <key>ProgramArguments</key>
+          <array>
+              <string>#{bin}/zap</string>
+              <string>-port</string>
+              <string>80</string>
+          </array>
+        </dict>
+      </plist>
+    EOS
+    p
   end
 
   test do
