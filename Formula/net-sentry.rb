@@ -15,33 +15,33 @@ class NetSentry < Formula
     pkgshare.install "config.example.toml"
   end
 
-  def post_install
-    config_dir = Pathname.new(Dir.home)/"Library/Application Support/net-sentry"
-    config_file = config_dir/"config.toml"
-    return if config_file.exist?
-
-    config_dir.mkpath
-    cp pkgshare/"config.example.toml", config_file
-  end
-
   service do
     run [opt_bin/"net-sentry"]
     keep_alive true
     process_type :background
-    log_path Pathname.new(Dir.home)/"Library/Logs/net-sentry.out.log"
-    error_log_path Pathname.new(Dir.home)/"Library/Logs/net-sentry.err.log"
+    log_path var/"log/net-sentry.out.log"
+    error_log_path var/"log/net-sentry.err.log"
   end
 
   def caveats
     <<~EOS
-      A default config has been seeded at:
-        ~/Library/Application Support/net-sentry/config.toml
+      net-sentry runs with sane built-in defaults; no config file is required.
+      To customize alert text, voice, debounce, or which channels fire, copy
+      the example config to your home directory and edit it:
+
+        mkdir -p "$HOME/Library/Application Support/net-sentry"
+        cp #{pkgshare}/config.example.toml \\
+           "$HOME/Library/Application Support/net-sentry/config.toml"
+
+      Then reload the daemon to pick up changes:
+        launchctl kickstart -k gui/$(id -u)/homebrew.mxcl.net-sentry
 
       To start the daemon (auto-starts on every login):
         brew services start net-sentry
 
-      To reload after editing config:
-        launchctl kickstart -k gui/$(id -u)/homebrew.mxcl.net-sentry
+      Logs:
+        #{var}/log/net-sentry.out.log
+        #{var}/log/net-sentry.err.log
 
       Read more: https://github.com/issmirnov/net-sentry
     EOS
