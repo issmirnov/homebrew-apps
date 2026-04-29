@@ -6,8 +6,8 @@ class NetSentry < Formula
   license "MIT"
   head "https://github.com/issmirnov/net-sentry.git", branch: "main"
 
-  depends_on :macos
   depends_on xcode: ["14.0", :build]
+  depends_on :macos
 
   def install
     system "swift", "build", "--disable-sandbox", "-c", "release"
@@ -53,8 +53,8 @@ class NetSentry < Formula
       sleep 1
       Process.kill("TERM", wait_thr.pid)
       output = stderr.read
-      Process.wait(wait_thr.pid) rescue nil
       assert_match "net-sentry: running", output
+      # Open3.popen3 with a block reaps via wait_thr.value at block exit.
     end
   end
 end
